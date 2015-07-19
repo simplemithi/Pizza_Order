@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>DeSilva</title>
+    <link rel="stylesheet" href="css/normalize.css"  type="text/css" media="screen" /> 
+    <link rel="stylesheet" href="css/pizza.css" /> 
+    <script type="text/javascript" src="js/myscript.js"></script>
+  </head>
+  <body>
+  <div class="wrapper1">
+  <form class="pizza" method="post" name="onlineOrder" action="https://zenit.senecac.on.ca/~emile.ohan/cgi-bin/pizza.cgi" 
+        onsubmit="return validateOrder();">
+  	<div class="info">
+  	
+  	
+  		<div class="block1">
+  			<p class="fancy"> MDS Pizza <br />  <br />
+  				(416) or (905) <br />
+  				491-5050 <br />
+  			</p>
+  			<hr class="block"/>
+  		</div>
+  		
+  		<div class="block2"> 			
+  				<p class="fancy"> Your Price <br /> <br />
+  					<input class="border" type="text" name="price" id="price" size="9" maxlength="8" readonly="readonly" /> <br /> </p>
+  				<p class="discount"> <input type="checkbox" name="doubleOrder" id="doubleOrder" onchange="calculatePizzaPrice();" /> Double your order - get 15% off <br /> </p>
+  				<p> <input class="submit" type="submit" value="PLACE YOUR ORDER"> </p>
+  				<hr class="block"/>  			
+  		</div>
+  		
+  		<div class="block3">
+  			<table class="pizza">
+  				<tr>
+  					<td class="pizza"> Small </td>
+  					<td class="pizza"> $10.55 </td>
+  				</tr>
+  				<tr>
+  					<td class="pizza"> Medium </td>
+  					<td class="pizza"> $14.25 </td>
+  				</tr>
+  				<tr>
+  					<td class="pizza"> Large </td>
+  					<td class="pizza"> $21.50 </td>
+  				</tr>
+  				<tr>
+  					<td class="pizza"> X-Large </td>
+  					<td class="pizza"> $25.00 </td>
+  				</tr>
+  				<tr>
+  					<th class="pizza" colspan="2"> Toppings </th>
+  				</tr>
+  				<tr>
+  					<td class="pizza"> $1.89 </td>
+  					<td class="pizza"> Each </td>
+  				</tr>
+  				<tr>
+  					<th class="pizza" colspan="2"> Plus 13% HST </th>
+  				</tr>
+  				<tr>
+  					<th class="pizza" colspan="2"> Free Delivery </th>
+  				</tr>
+  			</table>
+  		</div>
+  				
+  	</div>
+  	
+  	<div class="form">
+  		<fieldset>
+  			<legend> Personal Information </legend>
+  				<p class="bold">
+  				<label> Name </label> 
+  					<input type="text" name="surname" id="surname" maxlength="15" size="15"/> <br /> 
+  				<label> Account No. </label>
+  					<input type="text" name="client" id="client" maxlength="12" size="12" placeholder="xxxxxxx-xxxx"/>  <br />
+  				<label> Phone No. </label>
+  					<input type="text" name="phone" id="phone" maxlength="12" size="12" placeholder="xxx-xxx-xxxx"/> <br />
+  				<label> Date Of Birth </label>
+  					<input type="text" name="dob" id="dob" maxlength="7" size="7" placeholder="mmmyyyy"/> <br />
+  				</p>
+  		</fieldset>
+  		
+  		<fieldset>
+  			<legend> Pizza Size & Crust </legend>
+  				<select id="sizecrust" name="sizecrust" size="4" onchange="calculatePizzaPrice();" >
+					 <option value="Select Pizza Size">Select Pizza Size / Crust</option>
+					 <option value="S1">Small - Regular Crust</option>
+					 <option value="M1">Medium - Regular Crust</option>
+					 <option value="L1">Large - Regular Crust</option>
+					 <option value="X1">X-Large - Regular Crust</option>
+					 <option value="S2">Small - Thin Crust</option>
+					 <option value="M2">Medium - Thin Crust</option>
+					 <option value="L2">Large - Thin Crust</option>
+					 <option value="X2">X-Large - Thin Crust</option>
+					 <option value="S3">Small - Thick Crust</option>
+					 <option value="M3">Medium - Thick Crust</option>
+					 <option value="L3">Large - Thick Crust</option>
+					 <option value="X3">X-Large - Thick Crust</option>
+					 <option value="S4">Small - Whole Wheat Crust</option>
+					 <option value="M4">Medium - Whole Wheat Crust</option>
+					 <option value="L4">Large - Whole Wheat Crust</option>
+					 <option value="X4">X-Large - Whole Wheat Crust</option>
+				</select>
+		</fieldset>	
+		
+		<fieldset>
+  			<legend> Cheese </legend>
+  				<input type="radio" name="cheese" id="c01" value="Mozzarella" />Mozzarella
+				<input type="radio" name="cheese" id="c02" value="Reduced Fat" />Reduced Fat
+				<input type="radio" name="cheese" id="c03" value="Feta" />Feta
+  		</fieldset> 
+  		
+  		<fieldset>
+  			<legend> Sauces </legend>	
+  				<input type="radio" name="sauce" id="s01" value="Pizza Sauce" />Pizza Sauce
+				<input type="radio" name="sauce" id="s02" value="BBQ Sauce" />BBQ Sauce
+				<input type="radio" name="sauce" id="s03" value="Garlic Sauce" />Garlic Sauce
+  		</fieldset> 
+  		
+  		<fieldset>
+  			<legend>Special Instructions</legend>
+  				<textarea name="note" id="note" maxlength="150"> </textarea>
+  		</fieldset> 
+  	</div>
+  	
+  	<div class="form">
+  		<fieldset>
+  			<legend> Choose Toppings - $1.89 each </legend>
+  			<div class="pizza">
+  			<div class="left">
+  				<input type="checkbox" name="toppings" id="t01" value="Anchovies" onclick="calculatePizzaPrice();" /> 
+  					<label class="choice"> Anchovies </label> <br />
+				<input type="checkbox" name="toppings" id="t02" value="Bacon" onclick="calculatePizzaPrice();" />
+					<label class="choice">  Bacon </label> <br />
+				<input type="checkbox" name="toppings" id="t03" value="Ham" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Ham </label> <br />
+				<input type="checkbox" name="toppings" id="t04" value="Pepperoni" onclick="calculatePizzaPrice();" />
+					<label class="choice">  Pepperoni </label> <br />
+				<input type="checkbox" name="toppings" id="t05" value="Salami" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Salami </label> <br />
+				<input type="checkbox" name="toppings" id="t06" value="Sausage" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Sausage </label> <br />
+			</div>
+
+			<div class="right">
+				<input type="checkbox" name="toppings" id="t07" value="Broccoli" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Broccoli </label> <br />
+				<input type="checkbox" name="toppings" id="t08" value="Green Olives" onclick="calculatePizzaPrice();" />
+				 	<label class="choice"> Green Olives </label> <br />
+				<input type="checkbox" name="toppings" id="t09" value="Green Peppers" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Green Peppers </label> <br />
+				<input type="checkbox" name="toppings" id="t10" value="Mushrooms" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Mushrooms </label> <br />
+				<input type="checkbox" name="toppings" id="t11" value="Red Onions" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Red Onions </label> <br />
+				<input type="checkbox" name="toppings" id="t12" value="Roasted Garlic" onclick="calculatePizzaPrice();" />
+					<label class="choice"> Roasted Garlic </label> <br />
+			</div>
+			</div>
+  		</fieldset>
+  		
+  		<div class="later">
+  		<fieldset class="later">
+  			<legend class="later"> Order Status </legend>
+  		
+				<div  id="errors"></div>
+				
+  		</fieldset>
+  		</div>
+  	</div>
+  	<input  name="hPizzaPrice"      value="0"          type="hidden" /> 
+  	<input  name="hToppings"        value="0"          type="hidden" />
+  	<input  name="hToppingsCost"    value="0"          type="hidden" />
+  	<input  name="hDouble"          value="0"          type="hidden" />
+  	<input  name="hSubTotal"        value="0"          type="hidden" />
+  	<input  name="hHst"             value="0"          type="hidden" />
+  	<input  name="hFinalTotal"      value="0"          type="hidden" />
+  	<input  name="hJsActive"        value="N"          type="hidden" />
+  	<input  name="hLogin"           value="int222_142c07"  type="hidden" /> 
+  	<input  name="hName"            value="DeSilva"   type="hidden" />
+  </form>		
+  </div>
+  
+  
+  <footer>
+	<a href="https://zenit.senecac.on.ca/~int222_142c07//">zenit Account</a>
+	<a href="honesty.html">Honesty</a> 
+		<script>
+          var dt=new Date(document.lastModified);   // Get document last modified date
+          document.write('This page was last updated on '+dt.toLocaleString()) 
+        </script>
+	<a href="css/pizza.css">CSS</a>
+	<a href="js/myscript.js">JavaScript</a>
+  </footer>
+  </body>
+</html>
